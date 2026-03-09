@@ -21,27 +21,176 @@
 </header>
 
 <section class="reviews">
-<h2>Customer Reviews</h2>
+<h2>What Our Customers Say</h2>
+
 <div class="review-container">
-<div class="review">
-<p>"Amazing coffee and great atmosphere!"</p>
-<h4>- Sarah M.</h4>
+  <div class="review">
+    <p>"Amazing coffee and great atmosphere!" ★★★★★</p>
+    <h4>- Sarah M. (Ottawa)</h4>
+  </div>
+
+  <div class="review">
+    <p>"Best breakfast spot in the city." ★★★★★</p>
+    <h4>- Daniel R. (Toronto)</h4>
+  </div>
+
+  <div class="review">
+    <p>"The croissants are incredible." ★★★★☆</p>
+    <h4>- Jessica L. (Montreal)</h4>
+  </div>
 </div>
 
-<div class="review">
-<p>"Best breakfast spot in the city."</p>
-<h4>- Daniel R.</h4>
+<!-- NEW REVIEW FORM - WORKS ON GITHUB PAGES -->
+<div class="review-form-container">
+  <h3>Share Your Experience</h3>
+  <p style="color:#666; margin-bottom:1.5rem;">Help others discover La Bella Vista Cafe!</p>
+  
+  <form action="https://formsubmit.co/your-email@yourdomain.com" method="POST">
+    <!-- Hidden fields for organization -->
+    <input type="hidden" name="_subject" value="New Customer Review - La Bella Vista Cafe">
+    <input type="hidden" name="_next" value="https://jacobestephan.github.io/labellavista/reviews.html">
+    <input type="hidden" name="_captcha" value="false">
+    
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+    </div>
+    
+    <div class="form-group">
+      <select name="location" required>
+        <option value="">Which location did you visit?</option>
+        <option value="Ottawa">Ottawa</option>
+        <option value="Montreal">Montreal</option>
+        <option value="Toronto">Toronto</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Rating</label>
+      <div class="stars">
+        <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+      </div>
+    </div>
+    
+    <textarea name="message" placeholder="Tell us about your visit... What did you love? Any suggestions?" rows="5" required></textarea>
+    
+    <button type="submit">Submit Review</button>
+  </form>
+  
+  <p style="font-size:0.9rem; color:#666; margin-top:1rem;">
+    We read every review and feature our favorites! 
+    Thank you for helping others discover us. ❤️
+  </p>
 </div>
 
-<div class="review">
-<p>"The croissants are incredible."</p>
-<h4>- Jessica L.</h4>
-</div>
-</div>
 </section>
 
 <footer>
 <p>© 2026 La Bella Vista Cafe</p>
 </footer>
+
+<style>
+/* REVIEW FORM STYLES */
+.review-form-container {
+  background: #FDF6EC;
+  padding: 2.5rem;
+  border-radius: 15px;
+  margin: 3rem 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-left: 5px solid #D2691E;
+}
+
+.review-form-container h3 {
+  color: #8B4513;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e8d5b7;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #D2691E;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: #D2691E;
+}
+
+button[type="submit"] {
+  background: #8B4513;
+  color: white;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #A0522D;
+}
+
+@media (max-width: 768px) {
+  .review-form-container {
+    margin: 2rem 1rem;
+    padding: 2rem;
+  }
+}
+</style>
+
+<script>
+/* FORM SUCCESS MESSAGE */
+window.addEventListener('load', function() {
+  // Check if form was just submitted successfully
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('_formsubmited') === 'true') {
+    alert('Thank you! Your review has been submitted. We\'ll feature it soon!');
+  }
+});
+</script>
 </body>
 </html>
+
